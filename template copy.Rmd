@@ -1,0 +1,40 @@
+---
+title: "p8105_hw1_sp3903"
+output: github_document
+---
+
+# Problem 1
+
+##Creating a dataframe
+```{r, echo=FALSE, message = FALSE}
+library(tidyverse)
+```
+
+
+```{r}
+data_frame = tibble(
+  x = rnorm(10),
+  vec_logical = x > 0,
+  vec_char = 1:10,
+  vec_factor = factor(x = character(10), 3)
+)
+```
+
+##Finding the Means
+
+```{r}
+library(tidyverse)
+mean(pull, x)
+
+pull(x)
+mean(x)
+mean(vec_logical)
+mean(vec_char)
+mean(vec_factor)
+```
+
+
+
+
+
+
