@@ -5,18 +5,13 @@ output: github_document
 
 # Problem 1
 
-##Creating a dataframe
+## Creating a dataframe
+### Loading tidyverse
 ```{r}
 library(tidyverse)
 ```
 
-Instructions:
-Create a data frame comprised of:
-* a random sample of size 10 from a standard Normal distribution
-* a logical vector indicating whether elements of the sample are greater than 0
-* a character vector of length 10
-* a factor vector of length 10, with 3 different factor “levels”
-
+### Creating a dataframe
 ```{r}
 data_frame = tibble(
   x = rnorm(10),
@@ -26,11 +21,7 @@ data_frame = tibble(
 )
 ```
 
-##Finding the Means
-
-Instructions
-*Try to take the mean of each variable in your dataframe. What works and what doesn’t?
-
+### Finding the means
 ```{r}
 library(tidyverse)
 mean(pull(data_frame, x))
@@ -39,27 +30,30 @@ mean(pull(data_frame, vec_char))
 mean(pull(data_frame, vec_factor))
 ```
 
-The mean for the variables x and vec_logical work because they are numeric.
-The mean for the variables vec_char and vec_factor do not work because they are character variables. 
+* The mean for the variables x and vec_logical work because they are numeric.
+* The mean for the variables vec_char and vec_factor do not work because they are character variables. 
 
-##Penguins Dataset Description
-
+## Penguins Dataset Description
+### Loading Package
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
 
-* The data in this dataset include the following variable: `head(penguins, 1)`.
-* The size of the dataset `skimr::skim(penguins)`.
-* The mean flipper length is `mean(flipper)`.
+### Dataset description
+* The data in this dataset include the following variables: `r variable.names(penguins)`.
+* The size of the dataset  `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+* The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` mm.
 
-#scatterplot
+# Scatterplot
 ```{r}
-ggplat(pengin_plot, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color=species)) + geom_point()
 ```
 
 ```{r, echo=FALSE}
-ggave("results/penguin_plot", height = 4, width = 4)
+ggsave("results/penguins.pdf", height = 4, width = 6)
 ```
+
+
 
 
 
