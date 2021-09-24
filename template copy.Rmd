@@ -30,10 +30,17 @@ mean(pull(data_frame, vec_char))
 mean(pull(data_frame, vec_factor))
 ```
 
+## Means descriptions
 * The mean for the variables x and vec_logical work because they are numeric.
 * The mean for the variables vec_char and vec_factor do not work because they are character variables. 
 
-## Penguins Dataset Description
+## Converting charactor and factor variables to numeric
+```{r, eval = FALSE}
+as.numeric(pull(data_frame, vec_char))
+as.numeric(pull(data_frame, vec_factor))
+```
+
+# Problem 2
 ### Loading Package
 ```{r}
 data("penguins", package = "palmerpenguins")
@@ -44,7 +51,7 @@ data("penguins", package = "palmerpenguins")
 * The size of the dataset  `r nrow(penguins)` rows and `r ncol(penguins)` columns.
 * The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` mm.
 
-# Scatterplot
+## Scatterplot
 ```{r}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color=species)) + geom_point()
 ```

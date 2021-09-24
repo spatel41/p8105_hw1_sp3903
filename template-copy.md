@@ -40,13 +40,13 @@ library(tidyverse)
 mean(pull(data_frame, x))
 ```
 
-    ## [1] 0.1560449
+    ## [1] 0.05408967
 
 ``` r
 mean(pull(data_frame, vec_logical))
 ```
 
-    ## [1] 0.5
+    ## [1] 0.4
 
 ``` r
 mean(pull(data_frame, vec_char))
@@ -66,12 +66,21 @@ mean(pull(data_frame, vec_factor))
 
     ## [1] NA
 
+## Means descriptions
+
   - The mean for the variables x and vec\_logical work because they are
     numeric.
   - The mean for the variables vec\_char and vec\_factor do not work
     because they are character variables.
 
-## Penguins Dataset Description
+## Converting charactor and factor variables to numeric
+
+``` r
+as.numeric(pull(data_frame, vec_char))
+as.numeric(pull(data_frame, vec_factor))
+```
+
+# Problem 2
 
 ### Loading Package
 
@@ -88,7 +97,7 @@ data("penguins", package = "palmerpenguins")
   - The mean flipper length is 200.9152047
 mm.
 
-# Scatterplot
+## Scatterplot
 
 ``` r
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color=species)) + geom_point()
@@ -96,6 +105,6 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color=species)) 
 
     ## Warning: Removed 2 rows containing missing values (geom_point).
 
-![](template-copy_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](template-copy_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
     ## Warning: Removed 2 rows containing missing values (geom_point).
