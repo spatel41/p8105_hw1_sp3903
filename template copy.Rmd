@@ -6,32 +6,61 @@ output: github_document
 # Problem 1
 
 ##Creating a dataframe
-```{r, echo=FALSE, message = FALSE}
+```{r}
 library(tidyverse)
 ```
 
+Instructions:
+Create a data frame comprised of:
+* a random sample of size 10 from a standard Normal distribution
+* a logical vector indicating whether elements of the sample are greater than 0
+* a character vector of length 10
+* a factor vector of length 10, with 3 different factor “levels”
 
 ```{r}
 data_frame = tibble(
   x = rnorm(10),
   vec_logical = x > 0,
-  vec_char = 1:10,
-  vec_factor = factor(x = character(10), 3)
+  vec_char = c("a","b","c","d","e","f","g","h","i","j"),
+  vec_factor = factor(c("low","moderate","high","low","moderate","high","low","moderate","high","low"))
 )
 ```
 
 ##Finding the Means
 
+Instructions
+*Try to take the mean of each variable in your dataframe. What works and what doesn’t?
+
 ```{r}
 library(tidyverse)
-mean(pull, x)
-
-pull(x)
-mean(x)
-mean(vec_logical)
-mean(vec_char)
-mean(vec_factor)
+mean(pull(data_frame, x))
+mean(pull(data_frame, vec_logical))
+mean(pull(data_frame, vec_char))
+mean(pull(data_frame, vec_factor))
 ```
+
+The mean for the variables x and vec_logical work because they are numeric.
+The mean for the variables vec_char and vec_factor do not work because they are character variables. 
+
+##Penguins Dataset Description
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+* The data in this dataset include the following variable: `head(penguins, 1)`.
+* The size of the dataset `skimr::skim(penguins)`.
+* The mean flipper length is `mean(flipper)`.
+
+#scatterplot
+```{r}
+ggplat(pengin_plot, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
+```{r, echo=FALSE}
+ggave("results/penguin_plot", height = 4, width = 4)
+```
+
 
 
 
