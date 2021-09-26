@@ -40,6 +40,9 @@ as.numeric(pull(data_frame, vec_char))
 as.numeric(pull(data_frame, vec_factor))
 ```
 
+When converting the vec_char variable to numberic, there is a NA's introduced by coercion warning message. 
+* This provides context to what happens when you take the mean of a non-numberic vector. 
+
 # Problem 2
 ### Loading Package
 ```{r}
@@ -60,8 +63,7 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color=species)) 
 ggsave("results/penguins.pdf", height = 4, width = 6)
 ```
 
-
-
+This scatterplot displays the flipper length in mm by the bill length in mm. The colors indicate the species of penguins. 
 
 
 

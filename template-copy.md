@@ -40,13 +40,13 @@ library(tidyverse)
 mean(pull(data_frame, x))
 ```
 
-    ## [1] 0.05408967
+    ## [1] 0.5555269
 
 ``` r
 mean(pull(data_frame, vec_logical))
 ```
 
-    ## [1] 0.4
+    ## [1] 0.7
 
 ``` r
 mean(pull(data_frame, vec_char))
