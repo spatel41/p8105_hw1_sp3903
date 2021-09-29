@@ -40,13 +40,13 @@ library(tidyverse)
 mean(pull(data_frame, x))
 ```
 
-    ## [1] 0.5555269
+    ## [1] -0.08603134
 
 ``` r
 mean(pull(data_frame, vec_logical))
 ```
 
-    ## [1] 0.7
+    ## [1] 0.4
 
 ``` r
 mean(pull(data_frame, vec_char))
@@ -68,8 +68,8 @@ mean(pull(data_frame, vec_factor))
 
 ## Means descriptions
 
-  - The mean for the variables x and vec\_logical work because they are
-    numeric.
+  - The mean for the variables x and vec\_logical run without errors
+    because they are numeric.
   - The mean for the variables vec\_char and vec\_factor do not work
     because they are character variables.
 
@@ -79,6 +79,12 @@ mean(pull(data_frame, vec_factor))
 as.numeric(pull(data_frame, vec_char))
 as.numeric(pull(data_frame, vec_factor))
 ```
+
+When converting the vec\_char variable to numeric, there is a NA’s
+introduced by coercion warning message. When converting the vec\_factor
+to numeric, R produces a mean by adding values to each of the three
+factors. This provides context as to how R converts factors into numeric
+values.
 
 # Problem 2
 
@@ -94,13 +100,15 @@ data("penguins", package = "palmerpenguins")
     island, bill\_length\_mm, bill\_depth\_mm, flipper\_length\_mm,
     body\_mass\_g, sex, year.
   - The size of the dataset 344 rows and 8 columns.
-  - The mean flipper length is 200.9152047
+  - The range of flipper length is (172, 231) mm.
+  - The mean flipper length is 200.9152047 mm.
+  - The variance of the flipper length is 197.7317916
 mm.
 
 ## Scatterplot
 
 ``` r
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color=species)) + geom_point()
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 ```
 
     ## Warning: Removed 2 rows containing missing values (geom_point).
@@ -108,3 +116,6 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color=species)) 
 ![](template-copy_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
     ## Warning: Removed 2 rows containing missing values (geom_point).
+
+This scatterplot displays the flipper length in mm by the bill length in
+mm. The colors indicate the species of penguins.

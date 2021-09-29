@@ -31,7 +31,7 @@ mean(pull(data_frame, vec_factor))
 ```
 
 ## Means descriptions
-* The mean for the variables x and vec_logical work because they are numeric.
+* The mean for the variables x and vec_logical run without errors because they are numeric.
 * The mean for the variables vec_char and vec_factor do not work because they are character variables. 
 
 ## Converting charactor and factor variables to numeric
@@ -40,8 +40,9 @@ as.numeric(pull(data_frame, vec_char))
 as.numeric(pull(data_frame, vec_factor))
 ```
 
-When converting the vec_char variable to numberic, there is a NA's introduced by coercion warning message. 
-* This provides context to what happens when you take the mean of a non-numberic vector. 
+When converting the vec_char variable to numeric, there is a NA's introduced by coercion warning message. 
+When converting the vec_factor to numeric, R produces a mean by adding values to each of the three factors. 
+This provides context as to how R converts factors into numeric values. 
 
 # Problem 2
 ### Loading Package
@@ -52,11 +53,13 @@ data("penguins", package = "palmerpenguins")
 ### Dataset description
 * The data in this dataset include the following variables: `r variable.names(penguins)`.
 * The size of the dataset  `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+* The range of flipper length is (`r range(penguins$flipper_length_mm, na.rm = TRUE)`) mm.
 * The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` mm.
+* The variance of the flipper length is `r var(penguins$flipper_length_mm, na.rm = TRUE)` mm.
 
 ## Scatterplot
 ```{r}
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color=species)) + geom_point()
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 ```
 
 ```{r, echo=FALSE}
